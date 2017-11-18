@@ -13,8 +13,11 @@ if($_FILES["fileToUpload"]['error'] == UPLOAD_ERR_OK){
 }
 if ($truePhoto == 1){
     $directoryPhoto = "photos/";
-    $filePath = $directoryPhoto . $_FILES["fileToUpload"]['name'];
+    $filePath = $directoryPhoto . $_FILES["fileToUpload"]["name"];
+    //echo "</br>";
+    //echo $filePath;
+    move_uploaded_file( $_FILES["fileToUpload"]["tmp_name"],$filePath);
     echo "</br>";
-    echo $filePath;
+    echo "<img src='$filePath' alt='Your photo'>";
 }
 ?>
