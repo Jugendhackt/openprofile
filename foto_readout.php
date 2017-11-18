@@ -15,7 +15,7 @@
             $exif = exif_read_data('Junge-Katze-Erziehen.jpg',"IFD0" , true , true);
             $imagesize = getimagesize('DSC_0107.JPG');
             //var_dump($imagesize);
-            var__dump($exif);
+            var_dump($exif);
 
 
         ?>
