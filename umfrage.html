@@ -3,79 +3,91 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-<title>Questionnaire</title>
+<title>MindMem</title>
 </head>
 <body>
 
 <div class="container">
-<h1>Questionnaire</h1>
-<p>Please answer the following questions.</p>
+<br><br>
+<h1>MindMem</h1>
+<p>Please answer the following questions. <br> Click <i>Submit!</i> to see what your answers could probably reveal about you.</p>
 
 <form action="">
-  <div class="form-check form-check-inline">
-    <legend class="col-form-legend">Your gender?</legend>
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male"> male
-    </label>
+  <legend class="col-form-legend">Do you know the relation between a pencil and a compact cassette?</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="yes" checked>
+              yes
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="no">
+              no
+            </label>
+          </div>
+            <p id="cassette" style="display:none; color:green">You're probably not a teenager anymore!</p>
   </div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female"> female
-    </label>
-  </div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="other"> other
-    </label>
-  </div>
+
 
   <div class="form-group">
   <label for="formGroupExampleInput">Your occupation?</label>
   <input type="text" class="form-control" id="formGroupOccupation" placeholder="...">
+<p id="coder" style="display:none; color:green">A coder? Definitely interested in technology!</p>
 </div>
 
-<div class="form-group">
-  <label for="formGroupExampleInput2">Your civil status?</label>
-  <input type="text" class="form-control" id="formGroupCivilStatus" placeholder="...">
-</div>
 
-<label class="mr-sm-2" for="inlineFormCustomSelect">Your operating system?</label>
-<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-  <option selected>...</option>
-  <option value="windows">Windows</option>
-  <option value="osx">Mac OSX</option>
-  <option value="linux">Linux</option>
-</select>
-
-<legend class="col-form-legend col-sm-2">Your favorite car?</legend>
+<legend class="col-form-legend">Your system software?</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="volkswagen" checked>
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="windows" checked>
+            Windows
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="macosx">
+            Mac OS X
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="linux" checked>Linux
+       </label>
+        </div>
+      </div>
+
+<legend class="col-form-legend">Your favorite car?</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios6" value="volkswagen" checked>
             Volkswagen
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="audi">
-            Audi
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios7" value="audi">
+            Tesla
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="fiat" checked>
-            Fiat
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios8" value="fiat" checked>
+            Range Rover
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="volvo" checked>
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios9" value="volvo" checked>
             Volvo
           </label>
         </div>
       </div>
 <br>
-<input type="submit" value="Submit">
+<button type="button" onclick="document.getElementById('cassette').style.display='block'">Submit!</button>
 </form>
 </div>
 </body>
