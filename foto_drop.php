@@ -18,7 +18,7 @@
     <?php
     function getPicture()
     {
-        ini_set("upload_max_filesize",2000000);
+        ini_set("upload_max_filesize",10000000);
         $truePhoto = 1;
         if($_FILES["fileToUpload"]['error'] == UPLOAD_ERR_OK){
             echo "file Uploaded";
@@ -48,6 +48,7 @@
 
     $picturePath = getPicture();
     $exif = getExifData($picturePath);
+
     if (isset($exif)) {
         echo "<table>";
         foreach ($exif as $key => $value) {
@@ -67,10 +68,11 @@
 
     echo "</table>";
     ?>
-
     <div class="demo-frame">
         <div class="demo-container">
-            <img id="img" src="faces.jpg" />
+            <?php
+            echo '<img id="img" src="'. $picturePath.'" width="700"/>';
+            ?>
         </div>
     </div>
     <script src="foto_object_detection.js"></script>

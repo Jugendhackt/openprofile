@@ -1,8 +1,10 @@
 window.onload = function() {
     var img = document.getElementById('img');
     console.log(img);
-    var tracker = new tracking.ObjectTracker(['face', 'eye', 'mouth']);
-    tracker.setStepSize(1.7);
+    var tracker = new tracking.ObjectTracker(['face','mouth','eye']);
+    tracker.setStepSize(1.5);
+    tracker.setEdgesDensity(0.2);
+    tracker.setInitialScale(1)
     tracking.track('#img', tracker);
     tracker.on('track', function(event) {
         event.data.forEach(function(rect) {
