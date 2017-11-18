@@ -1,45 +1,45 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-<title>Umfrage</title>
+<title>Questionnaire</title>
 </head>
 <body>
 
 <div class="container">
-<h1>Umfrage</h1>
-<p>Beantworten Sie folgende Fragen.</p>
+<h1>Questionnaire</h1>
+<p>Please answer the following questions.</p>
 
 <form action="">
   <div class="form-check form-check-inline">
-    <legend class="col-form-legend col-sm-2">Ihr Geschlecht?</legend>
+    <legend class="col-form-legend">Your gender?</legend>
     <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> männlich
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male"> male
     </label>
   </div>
   <div class="form-check form-check-inline">
     <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> weiblich
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female"> female
     </label>
   </div>
   <div class="form-check form-check-inline">
     <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Sonstiges
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="other"> other
     </label>
   </div>
 
   <div class="form-group">
-  <label for="formGroupExampleInput">Ihre Berufsbezeichnung?</label>
-  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="...">
+  <label for="formGroupExampleInput">Your occupation?</label>
+  <input type="text" class="form-control" id="formGroupOccupation" placeholder="...">
 </div>
 
 <div class="form-group">
-  <label for="formGroupExampleInput2">Ihr Familienstand?</label>
-  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="...">
+  <label for="formGroupExampleInput2">Your civil status?</label>
+  <input type="text" class="form-control" id="formGroupCivilStatus" placeholder="...">
 </div>
 
-<label class="mr-sm-2" for="inlineFormCustomSelect">Ihr Betriebssystem?</label>
+<label class="mr-sm-2" for="inlineFormCustomSelect">Your operating system?</label>
 <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
   <option selected>...</option>
   <option value="windows">Windows</option>
@@ -47,7 +47,7 @@
   <option value="linux">Linux</option>
 </select>
 
-<legend class="col-form-legend col-sm-2">Ihr Lieblingsauto?</legend>
+<legend class="col-form-legend col-sm-2">Your favorite car?</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -75,7 +75,7 @@
         </div>
       </div>
 <br>
-<input type="submit" value="Abschicken">
+<input type="submit" value="Submit">
 </form>
 </div>
 </body>
