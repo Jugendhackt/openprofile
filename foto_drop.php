@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <head>
-    <script src="node_modules/tracking/build/tracking.js"></script>
-    <script src="node_modules/tracking/build/data/face-min.js"></script>
-</head>
+    <script src="../node_modules/tracking/build/tracking-min.js"></script>
+    <script src="../node_modules/tracking/build/data/face-min.js"></script>
+    <script src="../node_modules/tracking/build/data/eye-min.js"></script>
+    <script src="../node_modules/tracking/build/data/mouth-min.js"></script>
+    <style>
+        .rect {
+            border: 2px solid #a64ceb;
+            position: absolute;
+        }
+        #img {
+            position: absolute
+        }
+    </style>
+</head>/
 <body>
     <?php
     function getPicture()
@@ -57,7 +68,11 @@
     echo "</table>";
     ?>
 
-
+    <div class="demo-frame">
+        <div class="demo-container">
+            <img id="img" src="faces.jpg" />
+        </div>
+    </div>
     <script src="foto_object_detection.js"></script>
 </body>
 
