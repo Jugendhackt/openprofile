@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+<title>MindMem</title>
+</head>
+<body>
+
+<div class="container">
+<br><br>
+<h1>MindMem</h1>
+<p>Please answer the following questions. <br> Click <i>Submit!</i> to see what your answers could probably reveal about you.</p>
+
+<form action="">
+  <legend class="col-form-legend">Do you know the relation between a pencil and a compact cassette?</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="yes" checked>
+              yes
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="no">
+              no
+            </label>
+          </div>
+            <p id="cassette" style="display:none; color:green">You're probably not a teenager anymore!</p>
+  </div>
+
+
+  <div class="form-group">
+  <label for="formGroupExampleInput">Your occupation?</label>
+  <input type="text" class="form-control" id="formGroupOccupation" placeholder="...">
+<p id="coder" style="display:none; color:green">A coder? Definitely interested in technology!</p>
+</div>
+
+
+<legend class="col-form-legend">Your system software?</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="windows" checked>
+            Windows
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="macosx">
+            Mac OS X
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="linux" checked>Linux
+       </label>
+        </div>
+      </div>
+
+<legend class="col-form-legend">Your favorite car?</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios6" value="volkswagen" checked>
+            Volkswagen
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios7" value="audi">
+            Tesla
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios8" value="fiat" checked>
+            Range Rover
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios9" value="volvo" checked>
+            Volvo
+          </label>
+        </div>
+      </div>
+<br>
+<button type="button" onclick="document.getElementById('cassette').style.display='block'">Submit!</button>
+</form>
+</div>
+</body>
+</html>
