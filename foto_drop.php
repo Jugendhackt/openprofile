@@ -1,5 +1,6 @@
 <?php
 ini_set("upload_max_filesize",2000000);
+
 $truePhoto = 1;
 if($_FILES["fileToUpload"]['error'] == UPLOAD_ERR_OK){
     echo "file Uploaded";
@@ -9,5 +10,11 @@ if($_FILES["fileToUpload"]['error'] == UPLOAD_ERR_OK){
 } else {
     echo "there was a Problem with uploading";
     $truePhoto = 0;
+}
+if ($truePhoto == 1){
+    $directoryPhoto = "photos/";
+    $filePath = $directoryPhoto . $_FILES["fileToUpload"]['name'];
+    echo "</br>";
+    echo $filePath;
 }
 ?>
