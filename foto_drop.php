@@ -18,8 +18,24 @@ if ($truePhoto == 1){
     //echo $filePath;
     move_uploaded_file( $_FILES["fileToUpload"]["tmp_name"],$filePath);
     echo "<br>";
-    echo "<img src='$filePath' alt='Your photo'>";
+    echo "<img src='$filePath' alt='Your photo' width='480'>";
     echo "<br>";
-    var_dump(exif_read_data($filePath, 0, true));
+    //echo(json_encode(exif_read_data($filePath, 0, true)));
+    $exif = exif_read_data($filePath, 0, true);
+    echo "<table>";
+    foreach ( $exif as $key => $value){
+        echo "<tr>";
+            echo "<td>". $key . "</td>";
+            echo "<table>";
+                foreach ( $value as $key2 => $value2){
+                    echo "<tr>";
+                        echo "<td>". $key2 . "</td>";
+                        echo "<td>". $value2 . "</td>";
+                    echo "</tr>";
+                }
+            echo "</table>";
+        echo "</tr>";
+    }
+    echo "</table>";
 }
 ?>

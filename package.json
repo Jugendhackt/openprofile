@@ -4,7 +4,8 @@
   "description": "Schafft Bewusstsein für \"data tracking\"",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2"
+    "bootstrap": "^4.0.0-beta.2",
+    "tracking": "^1.1.3"
   },
   "repository": {
     "type": "git",
