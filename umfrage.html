@@ -26,15 +26,15 @@
               no
             </label>
           </div>
-            <p id="cassetteyes" style="display:none; color:green">You're probably not a teenager anymore!</p>
-            <p id="cassetteno" style="display:none; color:green">You're still young and don't know technologies like "cassettes" (?!)</p>
+            <p id="cassetteyes" class="infotext" style="display:none; color:green">You're educated or older than 30!</p>
+            <p id="cassetteno" class="infotext" style="display:none; color:green">You're still young and don't know technologies like "cassettes" (?!)</p>
   </div>
 
 
   <div class="form-group">
   <label for="occupation">Your occupation?</label>
   <input type="text" class="form-control" id="occupation" placeholder="...">
-<p id="coder" style="display:none; color:green">A coder? Definitely interested in technology!</p>
+<p id="coder" class="infotext" style="display:none; color:green">A coder? Definitely interested in technology!</p>
 </div>
 
 
@@ -58,7 +58,7 @@
             Linux
        </label>
         </div>
-        <p id="expensive" style="display:none; color:green">Services and products might be more expensive for you than for Windows or Linux users...</p>
+        <p id="expensive" class="infotext" style="display:none; color:green">Services and products might be more expensive for you than for Windows or Linux users...</p>
       </div>
 
 <legend class="col-form-legend">Your favorite car?</legend>
@@ -87,15 +87,28 @@
             BMW
           </label>
         </div>
-        <p id="cartesla" style="display:none; color:green">As an electric car, a Tesla is considered prestigious but eco-friendly. You care about the environment, don't you?</p>
+        <p id="cartesla" class="infotext" style="display:none; color:green">As an electric car, a Tesla is considered prestigious but eco-friendly. You care about the environment, don't you?</p>
+        <p id="carrangerover" class="infotext" style="display:none; color:green">BAM!</p>
       </div>
 <br>
-<button type="button" class="btn btn-dark" onclick="result1(); result4()">Submit!</button>
+<button type="button" class="btn btn-dark" onclick="getresult()">Submit!</button>
 </form>
 </div>
 <br><br>
 
 <script>
+function getresult() {
+  reset();
+  result1();
+  result4();
+}
+function reset() {
+  var infotexte = document.getElementsByClassName('infotext');
+  for (var i = 0; i < infotexte.length; i++){
+    infotexte[i].style.display = 'none';
+  }
+  console.log(infotexte);
+}
 function result1() {
   var relation = document.querySelector('input[name="relation"]:checked').value;
   if (relation == "yes") {
@@ -109,6 +122,10 @@ function result4() {
   var car = document.querySelector('input[name="car"]:checked').value;
   if (car == "tesla") {
     document.getElementById('cartesla').style.display='block';
+  }
+  else if (car == "rangerover") {
+    document.getElementById('carrangerover').style.display='block';
+  }
 }
 </script>
 
