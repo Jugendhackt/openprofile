@@ -84,6 +84,20 @@
                 return max;
             }
 
+            function getConvexHull(coordinates) {
+                let features = [];
+                for (let i = 0; i < coordinates.length; i++) {
+                    features.push(turf.point([coordinates[i][0], coordinates[i][1]]));
+                }
+                let points = turf.featureCollection(features);
+                let hull = turf.convex(points);
+                coords_hull = [];
+                for (let i = 0; i < hull.geometry.coordinates.length; i++) {
+                    coords_hull.push(hull.geometry.coordinates[i]);
+                }
+                return {"points": points, "coords_hull": coords_hull};
+            }
+
             function go() {
                 map.closePopup();
                 map.eachLayer(function (layer) {
@@ -93,20 +107,13 @@
                         coords.push([lat, lng]);
                     }
                 });
-                let features = [];
-                for (let i = 0; i < coords.length; i++) {
-                    features.push(turf.point([coords[i][0], coords[i][1]]));
-                }
-                let points = turf.featureCollection(features);
-                let hull = turf.convex(points);
-                coords_hull = [];
-                for (let i = 0; i < hull.geometry.coordinates.length; i++) {
-                    coords_hull.push(hull.geometry.coordinates[i]);
-                }
-                let polygon = L.polygon(coords_hull, {color: "red"}).addTo(map);
-                let tpolygon = turf.polygon(hull.geometry.coordinates);
+                let res = getConvexHull(coords);
+                let points = res["points"];
+                let coords_hull = res["coords_hull"];
+                //let polygon = L.polygon(coords_hull, {color: "red"}).addTo(map);
+                /*let tpolygon = turf.polygon(hull.geometry.coordinates);
                 let centroid = turf.centroid(tpolygon);
-                let center = turf.centerOfMass(tpolygon);
+                let center = turf.centerOfMass(tpolygon);*/
                 /*let centroidMarker = L.marker(centroid.geometry.coordinates).addTo(map);
                 let centerMarker = L.marker(center.geometry.coordinates).addTo(map);
                 let meanMarker = L.marker(getMean(coords)).addTo(map);
@@ -129,19 +136,34 @@
                 L.circle(getMean(coords), {radius: rad}).addTo(map);
 
 
-                let maxDistance = 2;
+                let maxDistance = 8;
                 let clustered = turf.clustersDbscan(points, maxDistance);
 
                 console.log(clustered);
 
-                let coords_clustered = clustered.features.map(function (el) {
+                let total = 0;
+                turf.clusterEach(clustered, 'cluster', function (cluster, clusterValue, currentIndex) {
+                    total++;
+                    console.log(cluster);
+                    console.log(clusterValue);
+                    console.log(currentIndex);
+                    console.log("-------------------------");
+                    let coords_cluster = cluster.features.map(function (el) {
+                        return el.geometry.coordinates;
+                    });
+                    let x = getConvexHull(coords_cluster);
+                    let polygon = L.polygon(x, {color: "red"}).addTo(map);
+                });
+                console.log(total);
+
+                /*let coords_clustered = clustered.features.map(function (el) {
                     return el.geometry.coordinates;
                 });
 
                 coords_clustered.forEach(function (el) {
                     let m = L.marker(el).addTo(map);
                     m.bindPopup(el[0] + " - " + el[1]).openPopup();
-                });
+                });*/
 
                 map.fitBounds(polygon.getBounds());
             }
