@@ -24,6 +24,7 @@
         <div id="map"></div>
         <button type="button" id="submit" class="btn" onclick="go();">Abschließen</button>
         <script type="text/javascript">
+            let THRESHOLD = 0.83;
             let map = L.map('map').setView([47.453418, 14.442466], 8);
             let coords = [];
 
@@ -58,6 +59,31 @@
                 return res;
             }
 
+            function getMiddleDist(center, coordinates) {
+                let sum = 0;
+                let centerL = L.latLng(center);
+                coordinates.forEach(function (el) {
+                    sum += centerL.distanceTo(L.latLng(el));
+                });
+                result = sum / (coordinates.length * THRESHOLD);
+                return result;
+            }
+
+            function getRad(center, coordinates) {
+                let max = 0;
+                let centerL = L.latLng(center);
+                coordinates.forEach(function (el) {
+                    let dist = centerL.distanceTo(L.latLng(el));
+                    if (dist > max) {
+                        max = dist;
+                    }
+                    console.log(el);
+                    console.log(center);
+                    console.log(dist);
+                });
+                return max;
+            }
+
             function go() {
                 map.closePopup();
                 map.eachLayer(function (layer) {
@@ -81,22 +107,41 @@
                 let tpolygon = turf.polygon(hull.geometry.coordinates);
                 let centroid = turf.centroid(tpolygon);
                 let center = turf.centerOfMass(tpolygon);
-                let centroidMarker = L.marker(centroid.geometry.coordinates).addTo(map);
+                /*let centroidMarker = L.marker(centroid.geometry.coordinates).addTo(map);
                 let centerMarker = L.marker(center.geometry.coordinates).addTo(map);
                 let meanMarker = L.marker(getMean(coords)).addTo(map);
                 centroidMarker.bindPopup("Centroid").openPopup();
                 centerMarker.bindPopup("Center").openPopup();
-                meanMarker.bindPopup("XX").openPopup();
+                meanMarker.bindPopup("XX").openPopup();*/
 
-                let clustered = turf.clustersKmeans(points);
+                /*let clustered = turf.clustersKmeans(points);
                 let cluster = turf.getCluster(clustered, {cluster: 3});
                 console.log(cluster);
 
                 let co = features.map(function (el) {
                     return el.geometry.coordinates;
+                });*/
+
+                // für point in coords: mean(distance zu XX)
+
+                //let rad = getRad(getMean(coords), coords_hull[0]);
+                let rad = getMiddleDist(getMean(coords), coords);
+                L.circle(getMean(coords), {radius: rad}).addTo(map);
+
+
+                let maxDistance = 2;
+                let clustered = turf.clustersDbscan(points, maxDistance);
+
+                console.log(clustered);
+
+                let coords_clustered = clustered.features.map(function (el) {
+                    return el.geometry.coordinates;
                 });
 
-                let polygon2 = L.polygon(coords_hull, {color: "blue"}).addTo(map);
+                coords_clustered.forEach(function (el) {
+                    let m = L.marker(el).addTo(map);
+                    m.bindPopup(el[0] + " - " + el[1]).openPopup();
+                });
 
                 map.fitBounds(polygon.getBounds());
             }
