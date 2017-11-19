@@ -68,7 +68,7 @@
         echo "</table>";
         ?>
         <div class="demo-frame">
-            <div class="demo-container">
+            <div id="demo-container">
                 <?php
                 echo '<img id="img" src="'. $picturePath.'" width="700"/>';
                 ?>
