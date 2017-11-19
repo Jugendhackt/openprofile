@@ -39,8 +39,16 @@ function getUserAgent()
             $par_end = stripos($os, ")", $par_start);
             $pars = substr($os, $par_start + 1, $par_end - $par_start - 1); // wegen (
             $arr = explode(";", $pars);
-            $os = $arr[0];
+            $os = "Windows";
             $arch = $arr[2];
+        } elseif (stripos($os, 'Mac OS X') !== false) {
+            $ver_start = stripos($os, 'Mac OS X') + 9;
+            $ver_end = stripos($os, " ", $ver_start);
+            $pars = substr($os, $ver_start, $ver_end - $ver_start - 1);
+            $arr = explode("_", $pars);
+            $version = implode(".", $arr);
+            $os = "MAC OS X " . $version;
+            $arch = null;
         }
     }
 
@@ -75,6 +83,19 @@ function getUserAgent()
         echo !empty($uadata['os']) ? "<p>Operating System: {$uadata['os']}" : null;
         echo !empty($uadata['arch']) ? "{$uadata['arch']}" : null . '</p>';
     ?>
+    <p>
+        Display Height: <span id="windowScreenHeight"></span>
+    </p>
+    <p>
+        Display Width: <span id="windowScreenWidth"></span>
+    </p>
+    <p>
+        Window Height: <span id="windowDisplayHeight"></span>
+    </p>
+    <p>
+        Window Width: <span id="windowDisplayWidth"></span>
+    </p>
+
 </div>
 <div class="container text-center">
     <div class="row">
@@ -114,5 +135,6 @@ function getUserAgent()
     </div>
 </div>
 <br/>
+<script src="display_size.js"></script>
 </body>
 </html>

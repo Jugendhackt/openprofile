@@ -1,4 +1,4 @@
 .idea/
 node_modules/
-photos/*
 .DS_Store
+photos/
