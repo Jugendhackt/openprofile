@@ -91,7 +91,7 @@ function getUserAgent()
         $uadata = getUserAgent();
         echo !empty($uadata['agent']) ? "<p>Browser: {$uadata['agent']}</p>" : null;
         echo !empty($uadata['os']) ? "<p>Operating System: {$uadata['os']}" : null;
-        echo !empty($uadata['arch']) ? "{$uadata['arch']}" : null . '</p>';
+        echo (!empty($uadata['arch']) ? " {$uadata['arch']}" : null) . '</p>';
     ?>
     <p>
         Display Height: <span id="windowScreenHeight"></span>
