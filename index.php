@@ -75,6 +75,19 @@ function getUserAgent()
         echo !empty($uadata['os']) ? "<p>Operating System: {$uadata['os']}" : null;
         echo !empty($uadata['arch']) ? "{$uadata['arch']}" : null . '</p>';
     ?>
+    <p>
+        Display Height: <span id="windowScreenHeight"></span>
+    </p>
+    <p>
+        Display Width: <span id="windowScreenWidth"></span>
+    </p>
+    <p>
+        Window Height: <span id="windowDisplayHeight"></span>
+    </p>
+    <p>
+        Window Width: <span id="windowDisplayWidth"></span>
+    </p>
+
 </div>
 <div class="container text-center">
     <div class="row">
@@ -114,5 +127,6 @@ function getUserAgent()
     </div>
 </div>
 <br/>
+<script src="display_size.js"></script>
 </body>
 </html>
