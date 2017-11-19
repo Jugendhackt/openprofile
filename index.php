@@ -105,7 +105,7 @@ function getUserAgent()
                 <div class="card-body">
                     <img src="OKQTLQ0.jpg" class="card-img-bottom" width="350" height="350">
                     <h4 class="card-title">What does a picture reveal about you?</h4>
-                    <p class="card-text">By sharing a picture here, you can take a look at, how much data social media companies gather about you with only a single private post!After your test, your picture will obviously be deleted!</p>
+                    <p class="card-text">By sharing a picture here, you can take a look at, how much data social media companies gather about you with only a single private post! After your test, your picture will obviously be deleted!</p>
                     <a href="foto_uploadform.html" class="btn btn-primary">Your Profile</a>
                 </div>
             </div>
@@ -116,7 +116,7 @@ function getUserAgent()
                 <div class="card-body">
                     <img src="2005.jpg" class="rounded" width="350" height="350">
                     <h4 class="card-title">What do GPS-pins reveal about you?</h4>
-                    <p class="card-text">By sharing several GPS-pins here, you can take a look at, what social media companies can tell about your areal behaviour!After your test, your GPS-Pins will obviously be deleted!</p>
+                    <p class="card-text">By sharing several GPS-pins here, you can take a look at, what social media companies can tell about your areal behaviour! After your test, your GPS-Pins will obviously be deleted!</p>
                     <a href="geo.php" class="btn btn-primary">Your Profile</a>
                 </div>
             </div>
@@ -127,7 +127,7 @@ function getUserAgent()
                 <div class="card-body">
                     <img src="112943-OONJZG-976.jpg" class="rounded" width="350" height="350">
                     <h4 class="card-title">What do comments reveal about you?</h4>
-                    <p class="card-text">By sharing a personal comment here, you can take a look at, what social media companies can tell about your character, mind set, gender and personal life!After your test, your comment will obviously be deleted!</p>
+                    <p class="card-text">By sharing a personal comment here, you can take a look at what social media companies can tell about your character, mind set, gender and personal life! After your test, your comment will obviously be deleted!</p>
                     <a href="umfrage.html" class="btn btn-primary">Your Profile</a>
                 </div>
             </div>
