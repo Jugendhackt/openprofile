@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>MindMem</title>
-      <meta charset="utf-8"/>
-          <link href="main.css" rel="stylesheet"/>
-          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  </head>
+
+<head>
+  <title>MindMem</title>
+  <meta charset="utf-8" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
 
 <body>
-  <div class="container">
-    <br><br>
-  <h1>MindMem</h1>
-    <p>Please answer the following questions. <br> Click <i>Submit!</i> to see what your answers could probably reveal about you.</p>
 
-<form id="form1" action="">
-  <legend class="col-form-legend">Do you know the relation between a pencil and a compact cassette?</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <label class="form-check-label">
+  <div class="jumbotron text-center">
+    <h1>MindMem</h1>
+    <h2 class="text-white">What do comments reveal about you?</h2>
+  </div>
+
+  <form id="form1">
+    <div class="container">
+      <div class="form-group">
+        <label class="col-form-legend">Do you know the relation between a pencil and a compact cassette?</label>
+        <div class="form-check">
+          <label class="form-check-label">
               <input class="form-check-input" type="radio" name="relation" id="yes" value="yes">
               yes
             </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
               <input class="form-check-input" type="radio" name="relation" id="no" value="no">
               no
             </label>
-          </div>
-            <p id="cassetteyes" class="infotext" style="display:none; color:green">You're educated or older than 30!</p>
-            <p id="cassetteno" class="infotext" style="display:none; color:green">You're still young and don't know technologies like "cassettes" (?!)</p>
-  </div><br>
+        </div>
+        <p id="cassetteyes" class="infotext" style="display:none; color:green">You're educated or older than 30!</p>
+        <p id="cassetteno" class="infotext" style="display:none; color:green">You're probably younger than 30 and raised with latest technology!</p>
+      </div>
 
 
-  <div class="form-group">
-  <label for="occupation">Your occupation?</label>
-  <input type="text" class="form-control" id="occupation" placeholder="..."><br>
-<p id="coder" class="infotext" style="display:none; color:green">A coder? Amazon might suggest you some nerdy mobile devices.</p>
-</div><br>
+      <div class="form-group">
+        <label for="occupation">Your occupation?</label>
+        <input type="text" class="form-control" id="occupation" placeholder="..."><br>
+        <p id="coder" class="infotext" style="display:none; color:green">I´m sure tech-companies will fight each other to employ you.</p>
+      </div><br>
 
-
-<legend class="col-form-legend">Your favorite car?</legend>
-      <div class="col-sm-10">
+      <div class="form-group">
+        <label>Your favorite car?</label>
         <div class="form-check">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="car" id="volkswagen" value="volkswagen">
@@ -70,67 +70,65 @@
             BMW
           </label>
         </div>
-        <p id="cartesla" class="infotext" style="display:none; color:green">As an electric car, a Tesla is considered prestigious but eco-friendly. You care about the environment, don't you?</p>
-        <p id="carrangerover" class="infotext" style="display:none; color:green">BAM! Not very eco-friendly.</p>
-        <p id="cargerman" class="infotext" style="display:none; color:green">You like German cars – what about Oktoberfest?</p>
+        <p id="cartesla" class="infotext" style="display:none; color:green">Obviously you care about the environment and therefore support the transition to renewable transportation. That´s great!</p>
+        <p id="carrangerover" class="infotext" style="display:none; color:green">You care about luxury and compfort driving. You should think more about your carbon footprint!</p>
+        <p id="cargerman" class="infotext" style="display:none; color:green">German cars are known for their excellent durability, eventhough the diesel scandal didn´t polish their image. </p><br>
+        <button type="button" class="btn btn-primary" onclick="getresult()">Your Profile</button>
       </div>
-  <br>
-  <button type="button" class="btn btn-danger" onclick="getresult()">Submit!</button>
-</form>
-</div>
-<br><br>
+  </form>
 
-<script>
-function getresult() {
-  reset();
-  result1();
-  result2 ();
-  result3();
-}
-function reset() {
-  var infotexte = document.getElementsByClassName('infotext');
-  for (var i = 0; i < infotexte.length; i++){
-    infotexte[i].style.display = 'none';
-  }
-}
+  <script>
+    function getresult() {
+      reset();
+      result1();
+      result2();
+      result3();
+    }
 
-function result1() {
-  var relation = document.querySelector('input[name="relation"]:checked');
-  if (relation == null) {
-    return;
-  }
-  if (relation.value == "yes") {
-    document.getElementById('cassetteyes').style.display='block';
-  } else if (relation.value == "no") {
-      document.getElementById('cassetteno').style.display='block';
-  }
-}
+    function reset() {
+      var infotexte = document.getElementsByClassName('infotext');
+      for (var i = 0; i < infotexte.length; i++) {
+        infotexte[i].style.display = 'none';
+      }
+    }
 
-function result2() {
-  var occupation = document.getElementById("occupation").value;
-  if (occupation == null) {
-    return;
-  }
-  if (occupation == "coder") {
-    document.getElementById('coder').style.display='block';
-  }
-}
+    function result1() {
+      var relation = document.querySelector('input[name="relation"]:checked');
+      if (relation == null) {
+        return;
+      }
+      if (relation.value == "yes") {
+        document.getElementById('cassetteyes').style.display = 'block';
+      } else if (relation.value == "no") {
+        document.getElementById('cassetteno').style.display = 'block';
+      }
+    }
 
-function result3() {
-  var car = document.querySelector('input[name="car"]:checked');
-  if (car == null) {
-    return;
-  }
-  if (car.value == "tesla") {
-    document.getElementById('cartesla').style.display='block';
-  }
-  else if (car.value == "rangerover") {
-    document.getElementById('carrangerover').style.display='block';
-  } else {
-    document.getElementById('cargerman').style.display='block';
-  }
-}
-</script>
+    function result2() {
+      var occupation = document.getElementById("occupation");
+      if (occupation == null) {
+        return;
+      }
+      if (occupation.value.toLowerCase() == "coder") {
+        document.getElementById('coder').style.display = 'block';
+      }
+    }
+
+    function result3() {
+      var car = document.querySelector('input[name="car"]:checked');
+      if (car == null) {
+        return;
+      }
+      if (car.value == "tesla") {
+        document.getElementById('cartesla').style.display = 'block';
+      } else if (car.value == "rangerover") {
+        document.getElementById('carrangerover').style.display = 'block';
+      } else {
+        document.getElementById('cargerman').style.display = 'block';
+      }
+    }
+  </script>
 
 </body>
+
 </html>
