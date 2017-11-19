@@ -11,7 +11,7 @@ function getPicture()
         echo "there was a Problem with the file size";
         $truePhoto = 0;
     } else {
-        echo "there was a Problem with uploading";
+        echo "there was a Problem while uploading";
         $truePhoto = 0;
     }
     if ($truePhoto == 1) {
@@ -20,6 +20,7 @@ function getPicture()
         //echo "<br>";
         //echo $filePath;
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $filePath);
+        var_dump($filePath);
         return $filePath;
     }else{
         return $truePhoto;
@@ -27,6 +28,7 @@ function getPicture()
 }
 function getExifData($filePath)
 {
+    var_dump($filePath);
     $exif = exif_read_data($filePath, 0, true);
     return $exif;
 }
