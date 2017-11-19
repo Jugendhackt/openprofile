@@ -1,4 +1,40 @@
 <?php
+    function getUserAgent()
+    {
+        static $agent = null;
+
+        if ( empty($agent) ) {
+            $agent = $_SERVER['HTTP_USER_AGENT'];
+
+            if ( stripos($agent, 'Firefox') !== false ) {
+                $agent = 'firefox';
+            } elseif ( stripos($agent, 'MSIE') !== false ) {
+                $agent = 'ie';
+            } elseif ( stripos($agent, 'iPad') !== false ) {
+                $agent = 'ipad';
+            } elseif ( stripos($agent, 'Android') !== false ) {
+                $agent = 'android';
+            } elseif ( stripos($agent, 'Chrome') !== false ) {
+                $agent = 'chrome';
+            } elseif ( stripos($agent, 'Safari') !== false ) {
+                $agent = 'safari';
+            } elseif ( stripos($agent, 'AIR') !== false ) {
+                $agent = 'air';
+            } elseif ( stripos($agent, 'Fluid') !== false ) {
+                $agent = 'fluid';
+            }
+
+        }
+
+        return $agent;
+    }
+
+    $ip = $_SERVER["REMOTE_ADDR"];
+    $header = getallheaders();
+    var_dump($header);
+    $lang = $header["Accept-Language"];
+    $lang = substr($lang, strpos($lang, ",") + 1, 2);
+    echo "Browser language: " . $lang;
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +62,7 @@
                 <img src="OKQTLQ0.jpg" class="card-img-bottom" width="350" height="350">
                 <h4 class="card-title">What does a picture reveal about you?</h4>
                 <p class="card-text">By sharing a picture here, you can take a look at, how much data social media companies gather about you with only a single private post!After your test, your picture will obviously be deleted!</p>
-                <a href="#" class="btn btn-primary">Your Profile</a>
+                <a href="foto_uploadform.html" class="btn btn-primary">Your Profile</a>
               </div>
             </div>
           </div>
@@ -37,7 +73,7 @@
                 <img src="2005.jpg" class="rounded" width="350" height="350">
                 <h4 class="card-title">What do GPS-pins reveal about you?</h4>
                 <p class="card-text">By sharing several GPS-pins here, you can take a look at, what social media companies can tell about your areal behaviour!After your test, your GPS-Pins will obviously be deleted!</p>
-                <a href="#" class="btn btn-primary">Your Profile</a>
+                <a href="geo.php" class="btn btn-primary">Your Profile</a>
               </div>
             </div>
           </div>
@@ -46,9 +82,9 @@
             <div class="card-title">
               <div class="card-body">
               <img src="112943-OONJZG-976.jpg" class="rounded" width="350" height="350">
-              <h4 class="card-title">What comments and likes reveal about you?</h4>
+              <h4 class="card-title">What do comments reveal about you?</h4>
               <p class="card-text">By sharing a personal comment here, you can take a look at, what social media companies can tell about your character, mind set, gender and personal life!After your test, your comment will obviously be deleted!</p>
-              <a href="#" class="btn btn-primary">Your Profile</a>
+              <a href="umfrage.html" class="btn btn-primary">Your Profile</a>
               </div>
             </div>
           </div>

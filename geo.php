@@ -23,20 +23,27 @@
     <body>
         <div id="map"></div>
         <button type="button" id="submit" class="btn" onclick="go();">Abschließen</button>
+        <button type="button" id="reset" class="btn" onclick="reset();">Zurücksetzen</button>
         <script type="text/javascript">
             let THRESHOLD = 0.83;
+            let MAX_DISTANCE = 3; //km
+
             let map = L.map('map').setView([47.453418, 14.442466], 8);
+            let layerg = L.layerGroup();
             let coords = [];
+            map.on('click', onMapClick);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 maxZoom: 18
             }).addTo(map);
+            layerg.addTo(map);
+            L.control.scale().addTo(map);
 
             function onMapClick(e) {
                 let lat = e.latlng.lat;
                 let lng = e.latlng.lng;
-                let marker = L.marker([lat, lng]).addTo(map);
+                let marker = L.marker([lat, lng]).addTo(layerg);
                 /*let input = document.createElement("input");
                 input.style.borderBottom = "1px solid black";
                 let popup = L.popup().setContent(input);
@@ -100,7 +107,7 @@
 
             function go() {
                 map.closePopup();
-                map.eachLayer(function (layer) {
+                layerg.eachLayer(function (layer) {
                     if (typeof layer._icon !== 'undefined') {
                         let lat = layer._latlng.lat;
                         let lng = layer._latlng.lng;
@@ -132,43 +139,61 @@
                 // für point in coords: mean(distance zu XX)
 
                 //let rad = getRad(getMean(coords), coords_hull[0]);
-                let rad = getMiddleDist(getMean(coords), coords);
-                L.circle(getMean(coords), {radius: rad}).addTo(map);
 
-
-                let maxDistance = 8;
-                let clustered = turf.clustersDbscan(points, maxDistance);
-
-                console.log(clustered);
+                let clustered = turf.clustersDbscan(points, MAX_DISTANCE);
 
                 let total = 0;
                 turf.clusterEach(clustered, 'cluster', function (cluster, clusterValue, currentIndex) {
                     total++;
-                    console.log(cluster);
-                    console.log(clusterValue);
-                    console.log(currentIndex);
-                    console.log("-------------------------");
-                    let coords_cluster = cluster.features.map(function (el) {
-                        return el.geometry.coordinates;
-                    });
-                    let x = getConvexHull(coords_cluster);
-                    let polygon = L.polygon(x, {color: "red"}).addTo(map);
                 });
-                console.log(total);
+
+               if (total < 2) {
+                    let rad = getMiddleDist(getMean(coords), coords);
+                    let circle = L.circle(getMean(coords), {radius: rad}).addTo(layerg);
+                    map.fitBounds(circle.getBounds());
+                } else {
+                    turf.clusterEach(clustered, 'cluster', function (cluster, clusterValue, currentIndex) {
+                        /*console.log(cluster);
+                        console.log(clusterValue);
+                        console.log(currentIndex);
+                        console.log("-------------------------");*/
+                        let coords_cluster = cluster.features.map(function (el) {
+                            return el.geometry.coordinates;
+                        });
+                        let result = getConvexHull(coords_cluster);
+                        //let polygon = L.polygon(result["coords_hull"], {color: "red"}).addTo(layerg);
+                        let point = getMean(result["coords_hull"][0]);
+                        let m = L.marker(point).addTo(layerg);
+                        m.bindPopup("Potential place of residence").openPopup();
+                        let rad = getMiddleDist(getMean(result["coords_hull"][0]), result["coords_hull"][0]);
+                        let circle = L.circle(getMean(result["coords_hull"][0]), {radius: rad}).addTo(layerg);
+                    });
+                }
 
                 /*let coords_clustered = clustered.features.map(function (el) {
                     return el.geometry.coordinates;
                 });
 
                 coords_clustered.forEach(function (el) {
-                    let m = L.marker(el).addTo(map);
+                    let m = L.marker(el).addTo(layerg);
                     m.bindPopup(el[0] + " - " + el[1]).openPopup();
                 });*/
-
-                map.fitBounds(polygon.getBounds());
             }
 
-            map.on('click', onMapClick);
+            function reset() {
+                layerg.clearLayers();
+                coords = [];
+                /*map.eachLayer(function (layer) {
+                    map.removeLayer(layer);
+                    console.log(layer);
+                });
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                    maxZoom: 18
+                }).addTo(map);*/
+            }
+
         </script>
     </body>
 </html>
