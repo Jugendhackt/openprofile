@@ -62,7 +62,7 @@ function getExifData($filePath)
                     foreach ($value as $key2 => $value2) {
                         echo "<tr>";
                         echo "<th style='width:200px'>" . $key2 . "</th>";
-                        echo "<td>" . $value2 . "</td>";
+                        echo "<td>" . (is_array($value2) ? implode(", ", $value2) : $value2) . "</td>";
                         echo "</tr>";
                     }
                     echo "</table>";
