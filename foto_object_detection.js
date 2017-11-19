@@ -14,7 +14,7 @@ window.onload = function() {
 
     window.plot = function(x, y, w, h) {
         var rect = document.createElement('div');
-        document.querySelector('.demo-container').appendChild(rect);
+        document.getElementById('demo-container').appendChild(rect);
         rect.classList.add('rect');
         rect.style.width = w + 'px';
         rect.style.height = h + 'px';
