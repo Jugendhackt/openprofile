@@ -49,6 +49,16 @@ function getUserAgent()
             $version = implode(".", $arr);
             $os = "MAC OS X " . $version;
             $arch = null;
+        } else if (stripos($os, "Linux") !== false) {
+            $ver_start = stripos($os, 'Linux') + 5;
+            $ver_end = stripos($os, ";", $ver_start);
+            $pars = substr($os, $ver_start, $ver_end - $ver_start - 1);
+            if (stripos($pars, "64") !== false) {
+                $arch = "x64";
+            } else {
+                $arch = "x32";
+            }
+            $os = "Linux";
         }
     }
 
