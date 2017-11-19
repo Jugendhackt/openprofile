@@ -55,11 +55,11 @@
         $exif = getExifData($picturePath);
 
         if (isset($exif)) {
-            echo "<table>";
+            echo '<table class="table table-hover">';
             foreach ($exif as $key => $value) {
                 echo "<tr>";
                 echo "<td>" . $key . "</td>";
-                echo "<table>";
+                echo '<table class="table table-hover">';
                 foreach ($value as $key2 => $value2) {
                     echo "<tr>";
                     echo "<td>" . $key2 . "</td>";
