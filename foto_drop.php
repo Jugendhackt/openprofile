@@ -1,10 +1,10 @@
 <!DOCTYPE html>
     <html>
     <head>
-        <script src="../node_modules/tracking/build/tracking-min.js"></script>
-        <script src="../node_modules/tracking/build/data/face-min.js"></script>
-        <script src="../node_modules/tracking/build/data/eye-min.js"></script>
-        <script src="../node_modules/tracking/build/data/mouth-min.js"></script>
+        <script src="https://rawgit.com/eduardolundgren/tracking.js/master/build/tracking-min.js"></script>
+        <script src="https://rawgit.com/eduardolundgren/tracking.js/master/build/data/face-min.js"></script>
+        <script src="https://rawgit.com/eduardolundgren/tracking.js/master/build/data/eye-min.js"></script>
+        <script src="https://rawgit.com/eduardolundgren/tracking.js/master/build/data/mouth-min.js"></script>
         <style>
             .rect {
                 border: 2px solid #a64ceb;
@@ -33,8 +33,6 @@
             if ($truePhoto == 1) {
                 $directoryPhoto = "photos/";
                 $filePath = $directoryPhoto . $_FILES["fileToUpload"]["name"];
-                //echo "<br>";
-                //echo $filePath;
                 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $filePath);
                 return $filePath;
             }else{

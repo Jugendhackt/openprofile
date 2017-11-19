@@ -1,4 +1,5 @@
 <?php
+    ini_set("error_reporting", "E_ALL & ~E_NOTICE");
 
 ?>
 <!DOCTYPE html>
@@ -27,8 +28,9 @@
         <script type="text/javascript">
             let THRESHOLD = 0.83;
             let MAX_DISTANCE = 3; //km
+            let DEBUG = false;
 
-            let map = L.map('map').setView([47.453418, 14.442466], 8);
+            let map = L.map('map').setView([48.19996433122713, 16.370315551757816], 13);
             let layerg = L.layerGroup();
             let coords = [];
             map.on('click', onMapClick);
@@ -44,6 +46,7 @@
                 let lat = e.latlng.lat;
                 let lng = e.latlng.lng;
                 let marker = L.marker([lat, lng]).addTo(layerg);
+                if (DEBUG) {console.log(lat + " " + lng);}
                 /*let input = document.createElement("input");
                 input.style.borderBottom = "1px solid black";
                 let popup = L.popup().setContent(input);
