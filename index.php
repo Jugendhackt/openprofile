@@ -47,7 +47,7 @@ function getUserAgent()
             $pars = substr($os, $ver_start, $ver_end - $ver_start - 1);
             $arr = explode("_", $pars);
             $version = implode(".", $arr);
-            $os = "OS X " . $version;
+            $os = "MAC OS X " . $version;
             $arch = null;
         }
     }
