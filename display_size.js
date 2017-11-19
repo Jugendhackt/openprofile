@@ -14,19 +14,19 @@ function getWindowWidth(){
 }
 
 window.onload = function(){
-    var windowScreenHeight = document.getElementById("windowScreenHeight");
-    windowScreenHeight.innerHTML = getScreenHeight();
-    var windowScreenWidth = document.getElementById("windowScreenWidth");
-    windowScreenWidth.innerHTML = getScreenWidth();
-    var windowDisplayHeight = document.getElementById("windowDisplayHeight");
-    windowDisplayHeight.innerHTML = getWindowHeight();
-    var windowDisplayWidth = document.getElementById("windowDisplayWidth");
-    windowDisplayWidth.innerHTML = getWindowWidth();
+    let windowScreenHeight = document.getElementById("windowScreenHeight");
+    windowScreenHeight.innerHTML = getScreenHeight() + "px";
+    let windowScreenWidth = document.getElementById("windowScreenWidth");
+    windowScreenWidth.innerHTML = getScreenWidth() + "px";
+    let windowDisplayHeight = document.getElementById("windowDisplayHeight");
+    windowDisplayHeight.innerHTML = getWindowHeight() + "px";
+    let windowDisplayWidth = document.getElementById("windowDisplayWidth");
+    windowDisplayWidth.innerHTML = getWindowWidth() + "px";
 }
 
 window.onresize = function() {
-    var windowDisplayHeight = document.getElementById("windowDisplayHeight");
-    windowDisplayHeight.innerHTML = getWindowHeight();
-    var windowDisplayWidth = document.getElementById("windowDisplayWidth");
-    windowDisplayWidth.innerHTML = getWindowWidth();
+    let windowDisplayHeight = document.getElementById("windowDisplayHeight");
+    windowDisplayHeight.innerHTML = getWindowHeight() + "px";
+    let windowDisplayWidth = document.getElementById("windowDisplayWidth");
+    windowDisplayWidth.innerHTML = getWindowWidth() + "px";
 }
