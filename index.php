@@ -44,7 +44,7 @@ function getUserAgent()
         } elseif (stripos($os, 'Mac OS X') !== false) {
             $ver_start = stripos($os, 'Mac OS X') + 9;
             $ver_end = stripos($os, " ", $ver_start);
-            $pars = substr($os, $ver_start, $ver_end - $ver_start - 2);
+            $pars = substr($os, $ver_start, $ver_end - $ver_start - 1);
             $arr = explode("_", $pars);
             $version = implode(".", $arr);
             $os = "OS X " . $version;
