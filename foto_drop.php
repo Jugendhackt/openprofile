@@ -48,7 +48,7 @@ function getExifData($filePath)
                 position: absolute
             }
         </style>
-    </head>/
+    </head>
     <body>
         <div class="container">
             <?php
