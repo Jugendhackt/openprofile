@@ -11,7 +11,7 @@
 <h1>MindMem</h1>
 <p>Please answer the following questions. <br> Click <i>Submit!</i> to see what your answers could probably reveal about you.</p>
 
-<form action="">
+<form id="form1" action="">
   <legend class="col-form-legend">Do you know the relation between a pencil and a compact cassette?</legend>
         <div class="col-sm-10">
           <div class="form-check">
@@ -28,38 +28,15 @@
           </div>
             <p id="cassetteyes" class="infotext" style="display:none; color:green">You're educated or older than 30!</p>
             <p id="cassetteno" class="infotext" style="display:none; color:green">You're still young and don't know technologies like "cassettes" (?!)</p>
-  </div>
+  </div><br>
 
 
   <div class="form-group">
   <label for="occupation">Your occupation?</label>
-  <input type="text" class="form-control" id="occupation" placeholder="...">
-<p id="coder" class="infotext" style="display:none; color:green">A coder? Definitely interested in technology!</p>
-</div>
+  <input type="text" class="form-control" id="occupation" placeholder="..."><br>
+<p id="coder" class="infotext" style="display:none; color:green">A coder? Amazon might suggest you some nerdy mobile devices.</p>
+</div><br>
 
-
-<legend class="col-form-legend">Your system software?</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="software" id="windows" value="windows">
-            Windows
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="software" id="macosx" value="macosx">
-            Mac OS X
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="software" id="linux" value="linux">
-            Linux
-       </label>
-        </div>
-        <p id="expensive" class="infotext" style="display:none; color:green">Services and products might be more expensive for you than for Windows or Linux users...</p>
-      </div>
 
 <legend class="col-form-legend">Your favorite car?</legend>
       <div class="col-sm-10">
@@ -88,10 +65,11 @@
           </label>
         </div>
         <p id="cartesla" class="infotext" style="display:none; color:green">As an electric car, a Tesla is considered prestigious but eco-friendly. You care about the environment, don't you?</p>
-        <p id="carrangerover" class="infotext" style="display:none; color:green">BAM!</p>
+        <p id="carrangerover" class="infotext" style="display:none; color:green">BAM! Not very eco-friendly.</p>
+        <p id="cargerman" class="infotext" style="display:none; color:green">You like German cars – what about Oktoberfest?</p>
       </div>
-<br>
-<button type="button" class="btn btn-dark" onclick="getresult()">Submit!</button>
+  <br>
+  <button type="button" class="btn btn-danger" onclick="getresult()">Submit!</button>
 </form>
 </div>
 <br><br>
@@ -100,31 +78,50 @@
 function getresult() {
   reset();
   result1();
-  result4();
+  result2 ();
+  result3();
 }
 function reset() {
   var infotexte = document.getElementsByClassName('infotext');
   for (var i = 0; i < infotexte.length; i++){
     infotexte[i].style.display = 'none';
   }
-  console.log(infotexte);
 }
+
 function result1() {
-  var relation = document.querySelector('input[name="relation"]:checked').value;
-  if (relation == "yes") {
+  var relation = document.querySelector('input[name="relation"]:checked');
+  if (relation == null) {
+    return;
+  }
+  if (relation.value == "yes") {
     document.getElementById('cassetteyes').style.display='block';
-  } else if (relation == "no") {
+  } else if (relation.value == "no") {
       document.getElementById('cassetteno').style.display='block';
   }
 }
 
-function result4() {
-  var car = document.querySelector('input[name="car"]:checked').value;
-  if (car == "tesla") {
+function result2() {
+  var occupation = document.getElementById("occupation").value;
+  if (occupation == null) {
+    return;
+  }
+  if (occupation == "coder") {
+    document.getElementById('coder').style.display='block';
+  }
+}
+
+function result3() {
+  var car = document.querySelector('input[name="car"]:checked');
+  if (car == null) {
+    return;
+  }
+  if (car.value == "tesla") {
     document.getElementById('cartesla').style.display='block';
   }
-  else if (car == "rangerover") {
+  else if (car.value == "rangerover") {
     document.getElementById('carrangerover').style.display='block';
+  } else {
+    document.getElementById('cargerman').style.display='block';
   }
 }
 </script>
