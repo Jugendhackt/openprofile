@@ -7,10 +7,10 @@ function getScreenWidth(){
 }
 
 function getWindowHeight(){
-    return window.screen.availHeight;
+    return window.innerHeight;
 }
 function getWindowWidth(){
-    return window.screen.availWidth;
+    return window.innerWidth;
 }
 
 window.onload = function(){
@@ -18,6 +18,13 @@ window.onload = function(){
     windowScreenHeight.innerHTML = getScreenHeight();
     var windowScreenWidth = document.getElementById("windowScreenWidth");
     windowScreenWidth.innerHTML = getScreenWidth();
+    var windowDisplayHeight = document.getElementById("windowDisplayHeight");
+    windowDisplayHeight.innerHTML = getWindowHeight();
+    var windowDisplayWidth = document.getElementById("windowDisplayWidth");
+    windowDisplayWidth.innerHTML = getWindowWidth();
+}
+
+window.onresize = function() {
     var windowDisplayHeight = document.getElementById("windowDisplayHeight");
     windowDisplayHeight.innerHTML = getWindowHeight();
     var windowDisplayWidth = document.getElementById("windowDisplayWidth");
