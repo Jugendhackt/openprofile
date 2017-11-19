@@ -39,8 +39,16 @@ function getUserAgent()
             $par_end = stripos($os, ")", $par_start);
             $pars = substr($os, $par_start + 1, $par_end - $par_start - 1); // wegen (
             $arr = explode(";", $pars);
-            $os = $arr[0];
+            $os = "Windows";
             $arch = $arr[2];
+        } elseif (stripos($os, 'Mac OS X') !== false) {
+            $ver_start = stripos($os, 'Mac OS X') + 9;
+            $ver_end = stripos($os, " ", $ver_start);
+            $pars = substr($os, $ver_start + 1, $ver_end - $ver_start - 1);
+            $arr = explode("_", $pars);
+            $version = implode(".", $arr);
+            $os = "OS X " . $version;
+            $arch = null;
         }
     }
 
