@@ -34,7 +34,6 @@ function getExifData($filePath)
         <script src="https://rawgit.com/eduardolundgren/tracking.js/master/build/data/eye-min.js"></script>
         <script src="https://rawgit.com/eduardolundgren/tracking.js/master/build/data/mouth-min.js"></script>
         <meta charset="utf-8"/>
-        <link href="main.css" rel="stylesheet"/>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>

@@ -1,4 +1,10 @@
-
+<?php
+    $files = glob('photos/*.*');
+    foreach($files as $file){ // iterate files
+        if(is_file($file))
+            unlink($file); // delete file
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +32,5 @@
         </form>
     </div>
 </div>
-
 </body>
 </html>
